@@ -5,7 +5,7 @@
 
 schema:
   schema_id: wubi
-  name: "纯五笔"
+  name: "五笔"
   version: "2.1"
   icon: icons/CN.ico
   ascii_icon: icons/EN.ico
