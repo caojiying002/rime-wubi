@@ -18,9 +18,6 @@ schema:
   dependencies:
     - wb_spelling
 switches:
-  - name: show_es
-    # reset: 0
-    states: [ 💀, 😄 ]  
   - name: zh_trad
     # reset: 0
     states: [ 简,繁 ]
@@ -49,7 +46,6 @@ engine:
   filters:
     - lua_filter@new_spelling@spelling
     - simplifier
-    - simplifier@es_conversion
     - lua_filter@single_char
     - reverse_lookup_filter@ci_reverse_lookup
     - uniquifier
@@ -84,10 +80,6 @@ engine:
     - "table_translator@rvl_zhuyin"
     - "history_translator@history"
     - "lua_translator@helper"
-    - lua_translator@*date_ts
-    - lua_translator@*date_extend_ts
-    - lua_translator@test
-    - "lua_translator@calculator"
 
 speller:
   auto_select: false
@@ -234,7 +226,6 @@ recognizer:
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
     zhuyin: "~[a-y]*?$"
     helper: '^help$'
-    expression: "^=.*$"
 history:
   input: z
   size: 1
@@ -281,9 +272,3 @@ key_binder:
     - { when: always, accept: Control+period, toggle: ascii_punct }  # ctrl + . 中英文标点切换
 punctuator:
   import_preset: symbols
-
-es_conversion:
-  opencc_config: es.json
-  option_name: show_es
-  tips: none # all/none, "〈Emoji〉"
-  inherit_comment: false # 继承注释

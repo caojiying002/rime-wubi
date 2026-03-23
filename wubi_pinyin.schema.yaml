@@ -20,9 +20,6 @@ schema:
     - pinyin
 
 switches:
-  - name: show_es
-    reset: 0
-    states: [ 💀, 😄 ]
   - name: ascii_mode
     reset: 0
     states: [ 中文, 西文 ]
@@ -53,21 +50,10 @@ engine:
     - punct_translator
     - reverse_lookup_translator
     - table_translator
-    - lua_translator@*date_ts
-    - lua_translator@*date_extend_ts
-    - lua_translator@test
-    - "lua_translator@calculator"
     - "lua_translator@helper"
   filters:
-    - simplifier@emoji_switch
     - simplifier
     - uniquifier
-    
-emoji_switch:
-  opencc_config: es.json
-  option_name: show_es
-  tips: none # all/none, "〈Emoji〉"
-  inherit_comment: false # 继承注释
 
   
 speller:
@@ -152,7 +138,6 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    expression: "^=.*$"
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     #uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     uppercase: "" #中文状态大写锁定直接上屏
