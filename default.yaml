@@ -56,7 +56,7 @@ ascii_composer:
     Shift_R: commit_code
     Control_L: noop
     Control_R: noop
-    Caps_Lock: clear
+    Caps_Lock: noop
     Eisu_toggle: clear
 
 menu:
